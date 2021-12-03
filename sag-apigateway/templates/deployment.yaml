@@ -99,7 +99,7 @@ spec:
           protocol: TCP
         livenessProbe:
           failureThreshold: 3
-          initialDelaySeconds: 30
+          initialDelaySeconds: 120
           periodSeconds: 5
           successThreshold: 1
           tcpSocket:
@@ -107,7 +107,7 @@ spec:
           timeoutSeconds: 2
         readinessProbe:
           failureThreshold: 3
-          initialDelaySeconds: 10
+          initialDelaySeconds: 120
           periodSeconds: 2
           successThreshold: 2
           tcpSocket:

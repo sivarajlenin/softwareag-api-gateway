@@ -70,11 +70,11 @@ resources:
   elastic-search:
     requests:
       cpu: 500m
-      memory: 2Gi
+      memory: 1Gi
     limits:
       # use a high cpu limit to avaoid the container being throttled
       cpu: 500m
-      memory: 2Gi
+      memory: 1Gi
 
 nodeSelector: {}
 
