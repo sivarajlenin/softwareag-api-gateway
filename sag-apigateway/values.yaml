@@ -1,83 +1,80 @@
-# Sample values for apigateway.
-# This helm chart deploys a kubernetes deployment for an apigateway and a matching service.
-# This is a YAML-formatted file.
+# /*
+#  * Copyright (c) 2021 Software AG, Darmstadt, Germany and/or its licensors
+#  *
+#  * SPDX-License-Identifier: Apache-2.0
+#  *
+#  *   Licensed under the Apache License, Version 2.0 (the "License");
+#  *   you may not use this file except in compliance with the License.
+#  *   You may obtain a copy of the License at
+#  *
+#  *       http://www.apache.org/licenses/LICENSE-2.0
+#  *
+#  *   Unless required by applicable law or agreed to in writing, software
+#  *   distributed under the License is distributed on an "AS IS" BASIS,
+#  *   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+#  *   See the License for the specific language governing permissions and
+#  *   limitations under the License.
+#  *
+#  */
 
-replicaCount: 1
+global:
+  app:                             apigateway
+  integrationServerInstanceName:   default
+  curlImage:                       "curlimages/curl"
+  trialUsage:                      false
+  registryCredentialsName:         registry-credentials
 
-image:
-    # Use the url pointing to your repository.
-    repository: us-central1-docker.pkg.dev/gcp-lab-332618/gcp-lab-artifactory-01/apigw-demo-apidays
-    tag: 10.11.01
-        # The default pull policy is IfNotPresent which causes the Kubelet to skip pulling an image if it already exists.
-        # If you would like to always force a pull use "Always"
-    pullPolicy: IfNotPresent
+apigwClusterSize:   1
 
-# Secrets you need to pull image frome the repository
-imagePullSecrets: []
+apigwImage:            "store/softwareag/apigateway-trial"
+apigwTag:              "10.11"
 
-service:
-    type: NodePort
+apigwUiService:        "apigw-ui-svc"
+apigwRtService:        "apigw-rt-svc"
 
-# Port of Integration Server used in the Docker image. Default port is: 5555
-is:
-    port: 5555
+apigwRuntimePort:      5555
+apigwUiPort:           9072
 
-# Port of ApiGateway used in the Docker image. Default port is: 9072
-apigateway:
-    port: 9072
+apigwConfigmap:        "apigw-config"
+nginxConfigmap:        "nginx-config"
 
-# Use only elasticsearch_external, elasticsearch_sidecar or elasticsearch_embedded,
-# Depending on your environment and intentions.
-# Replaced the sample data with the one that suits your environment.
+apigwLicenseConfig:    "apigw-license-config"
+apigwLicenseFilename:  "licenseKey.xml"
 
-#Datas to reach your external elasticsearch.
-    # Url pointing to your running elasticsearch for example: 127.0.0.1:9200
-    # Use true if your elasticsearch has https enabled, false if not.
-    # Fill in your elasticsearch username for example: elastic
-    # Fill in your elasticsearch password for example: changeme
-#Elasticsearch_external:
-#    host: "<UrlToYourExternalElasticsearch>:<elasticsearchPort>"
-#    https: <"false" or "true">
-#    username: <elasticsearchUsername>
-#    password: <elasticsearchPassword>
+k8sClusterSuffix:      "apidays-paris-2021"
 
-# Docker image for elasticsearch. Default is: docker.elastic.co/elasticsearch/elasticsearch:5.6.4
-elasticsearch_sidecar:
-    image: docker.elastic.co/elasticsearch/elasticsearch
-    tag: 7.13.0
+clusterDiscoveryAccount: "cluster-discovery-sa"
+clusterDiscoveryRole:    "cluster-discovery-role"
 
-# Port of the embedded elasticsearch used inside off the container. Default is: 9240
-#elasticsearch_embedded:
-#    port: 9240
 
-# If a terracotta_host is set, the api gateway(s) will try to connect them to the terracotta host and cluster them.
-# Please be aware that the terracotta license have to be available in die docker image of the apiGateway.
-# This will only work with an external elasticsearch
-# Terracotta_host: "terracottahost:9510"
+externalLoadBalancer:  false
+nginxService:          "nginx-service"
 
-#resources: {}
+
 resources:
 
-  sag-apigateway:
+  apigwInitContainer:
     requests:
-      cpu: 250m
-      memory: 1Gi
+      cpu: 100m
+      memory: 50Mi
     limits:
-      # use a high cpu limit to avaoid the container being throttled
-      cpu: 400m
+      cpu: 1
       memory: 1Gi
 
-  elastic-search:
+  apigwContainer:
     requests:
-      cpu: 250m
+      cpu: 500m
+      memory: 4Gi
+    limits:
+      # use a high cpu limit to avaoid the container being throttled
+      cpu: 1
+      memory: 8Gi
+
+  nginxContainer:
+    requests:
+      cpu: 500m
       memory: 2Gi
     limits:
       # use a high cpu limit to avaoid the container being throttled
-      cpu: 400m
-      memory: 2Gi
-
-nodeSelector: {}
-
-tolerations: []
-
-affinity: {}
+      cpu: 1
+      memory: 4Gi
