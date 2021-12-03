@@ -64,7 +64,7 @@ spec:
           {{ end }}
         livenessProbe:
           failureThreshold: 4
-          initialDelaySeconds: 30
+          initialDelaySeconds: 60
           periodSeconds: 10
           successThreshold: 1
           tcpSocket:
@@ -99,8 +99,8 @@ spec:
           protocol: TCP
         livenessProbe:
           failureThreshold: 3
-          initialDelaySeconds: 10
-          periodSeconds: 2
+          initialDelaySeconds: 30
+          periodSeconds: 5
           successThreshold: 1
           tcpSocket:
             port: 9200
