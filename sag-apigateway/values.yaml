@@ -60,21 +60,21 @@ resources:
 
   sag-apigateway:
     requests:
-      cpu: 500m
+      cpu: 250m
       memory: 1Gi
     limits:
       # use a high cpu limit to avaoid the container being throttled
-      cpu: 500m
+      cpu: 400m
       memory: 1Gi
 
   elastic-search:
     requests:
-      cpu: 500m
-      memory: 1Gi
+      cpu: 250m
+      memory: 2Gi
     limits:
       # use a high cpu limit to avaoid the container being throttled
-      cpu: 500m
-      memory: 1Gi
+      cpu: 400m
+      memory: 2Gi
 
 nodeSelector: {}
 
