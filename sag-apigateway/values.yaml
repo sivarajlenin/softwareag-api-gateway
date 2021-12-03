@@ -55,7 +55,26 @@ elasticsearch_sidecar:
 # This will only work with an external elasticsearch
 # Terracotta_host: "terracottahost:9510"
 
-resources: {}
+#resources: {}
+resources:
+
+  sag-apigateway:
+    requests:
+      cpu: 500m
+      memory: 1Gi
+    limits:
+      # use a high cpu limit to avaoid the container being throttled
+      cpu: 500m
+      memory: 2Gi
+
+  elastic-search:
+    requests:
+      cpu: 500m
+      memory: 2Gi
+    limits:
+      # use a high cpu limit to avaoid the container being throttled
+      cpu: 500m
+      memory: 3Gi
 
 nodeSelector: {}
 
