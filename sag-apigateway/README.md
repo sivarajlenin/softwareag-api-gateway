@@ -1,9 +1,4 @@
-# softwareag-api-gateway
-The API Gateway installation provides a sample helm chart. API Gateway uses Helm to streamline
-the Kubernetes installation and management. Helm allows you to easily templatize the Kubernetes
-deployments and provides a set of configuration parameters that you can use to customize the
-deployment. Helm chart combines the Kubernetes deployments and provides a service to manage
-them.
+# Helm Charts for API Gateway
 
 The Helm chart covers the following Kubernetes deployments for API Gateway:
 * A pod with containers for API Gateway, Elasticsearch, and Kibana
@@ -15,7 +10,7 @@ The Helm chart supports a values.yaml file for the following Elasticsearch confi
 * External Elasticsearch
 * Elasticsearch in a sidecar deployment
 
-The [values.yaml](sag-apigateway/values.yaml) file passes the configuration parameters into the Helm chart.
+The [values.yaml](sag-apigateway/values.yaml) file passes the configuration parameters into the Helm chart. 
 Provide the required parameters in this file to customize the deployment.
 
 ## Using Helm to Start the API Gateway Service
