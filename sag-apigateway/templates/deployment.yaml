@@ -40,7 +40,7 @@ spec:
         - name: "apigw_elasticsearch_https_enabled"
           value: "false"
         - name: "apigw_elasticsearch_http_username"
-          value: 
+          value:
         - name: "apigw_elasticsearch_http_password"
           value:
         {{ end }}
@@ -56,7 +56,7 @@ spec:
             protocol: TCP
           - containerPort: {{ .Values.apigateway.port }}
             name: "{{ .Values.apigateway.port }}tcp"
-            protocol: TCP 
+            protocol: TCP
           {{ if and (not .Values.elasticsearch_external) (not .Values.elasticsearch_sidecar) }}
           - containerPort: {{ .Values.elasticsearch_embedded.port }}
             name: "{{ .Values.elasticsearch_embedded.port }}tcp"
@@ -89,7 +89,7 @@ spec:
           value: "false"
         - name: "node.name"
           value: "elasticsearch"
-        - name: "discovery.seed_hosts" 
+        - name: "discovery.seed_hosts"
           value: "elasticsearch:9300"
         - name: "cluster.initial_master_nodes"
           value: "elasticsearch"
@@ -111,12 +111,12 @@ spec:
           periodSeconds: 2
           successThreshold: 2
           tcpSocket:
-            port: 9200 
+            port: 9200
           timeoutSeconds: 2
       {{ end }}
-      resources:
-       {{- toYaml .Values.resources | nindent 12 }}
-      {{- with .Values.nodeSelector }}
+      #resources:
+      # {{- toYaml .Values.resources | nindent 12 }}
+      # {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
       {{- end }}
