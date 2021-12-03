@@ -65,7 +65,7 @@ resources:
     limits:
       # use a high cpu limit to avaoid the container being throttled
       cpu: 500m
-      memory: 2Gi
+      memory: 1Gi
 
   elastic-search:
     requests:
@@ -74,7 +74,7 @@ resources:
     limits:
       # use a high cpu limit to avaoid the container being throttled
       cpu: 500m
-      memory: 3Gi
+      memory: 2Gi
 
 nodeSelector: {}
 
