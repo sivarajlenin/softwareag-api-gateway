@@ -26,8 +26,8 @@ global:
 
 apigwClusterSize:   1
 
-apigwImage:            "store/softwareag/apigateway-trial"
-apigwTag:              "10.11"
+apigwImage:            "us-central1-docker.pkg.dev/gcp-lab-332618/gcp-lab-artifactory-01/apigw-demo-apidays"
+apigwTag:              "10.11.01"
 
 apigwUiService:        "apigw-ui-svc"
 apigwRtService:        "apigw-rt-svc"
