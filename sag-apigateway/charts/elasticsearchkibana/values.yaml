@@ -49,7 +49,7 @@ simpleLinuxImage:               "busybox"
 
 
 resources:
-  
+
   esInitContainer:
     requests:
       cpu: 100m
@@ -57,16 +57,16 @@ resources:
     limits:
       cpu: 1
       memory: 1Gi
-  
+
   esContainer:
     requests:
       cpu: 500m
       memory: 2Gi
     limits:
       # use a high cpu limit to avaoid the container being throttled
-      cpu: 8
-      memory: 4Gi
-  
+      cpu: 1
+      memory: 2Gi
+
   kibanaInitContainer:
     requests:
       cpu: 100m
@@ -74,12 +74,12 @@ resources:
     limits:
       cpu: 1
       memory: 1Gi
-  
+
   kibanaContainer:
     requests:
       cpu: 500m
-      memory: 2Gi
+      memory: 1Gi
     limits:
       # use a high cpu limit to avaoid the container being throttled
-      cpu: 8
-      memory: 4Gi
+      cpu: 1
+      memory: 1Gi

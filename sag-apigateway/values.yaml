@@ -47,7 +47,7 @@ clusterDiscoveryAccount: "cluster-discovery-sa"
 clusterDiscoveryRole:    "cluster-discovery-role"
 
 
-externalLoadBalancer:  false
+externalLoadBalancer:  true
 nginxService:          "nginx-service"
 
 
@@ -55,7 +55,7 @@ resources:
 
   apigwInitContainer:
     requests:
-      cpu: 100m
+      cpu: 1000m
       memory: 50Mi
     limits:
       cpu: 1
@@ -64,17 +64,17 @@ resources:
   apigwContainer:
     requests:
       cpu: 500m
-      memory: 4Gi
+      memory: 1Gi
     limits:
       # use a high cpu limit to avaoid the container being throttled
       cpu: 1
-      memory: 8Gi
+      memory: 1Gi
 
   nginxContainer:
     requests:
       cpu: 500m
-      memory: 2Gi
+      memory: 1Gi
     limits:
       # use a high cpu limit to avaoid the container being throttled
       cpu: 1
-      memory: 4Gi
+      memory: 2Gi
