@@ -39,7 +39,7 @@ kibanaTag:                      "7.13.0"
 
 clusterSize:                    3
 initialMasterCount:             3
-kibanaCount:                    2
+kibanaCount:                    1
 
 storageClassName:               ""
 storageRequest:                 50Gi
@@ -65,7 +65,7 @@ resources:
     limits:
       # use a high cpu limit to avaoid the container being throttled
       cpu: 1
-      memory: 2Gi
+      memory: 4Gi
 
   kibanaInitContainer:
     requests:
@@ -82,4 +82,4 @@ resources:
     limits:
       # use a high cpu limit to avaoid the container being throttled
       cpu: 1
-      memory: 1Gi
+      memory: 2Gi

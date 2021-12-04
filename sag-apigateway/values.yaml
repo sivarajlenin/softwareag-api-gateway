@@ -47,7 +47,7 @@ clusterDiscoveryAccount: "cluster-discovery-sa"
 clusterDiscoveryRole:    "cluster-discovery-role"
 
 
-externalLoadBalancer:  true
+externalLoadBalancer:  false
 nginxService:          "nginx-service"
 
 
