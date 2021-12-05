@@ -26,7 +26,7 @@ metadata:
     {{- include "apigateway.labels" . | nindent 4 }}
   name: {{ include "apigateway.customPrefix" . }}apigateway
 spec:
-  replicas: {{ .Values.apigwClusterSize }} 
+  replicas: {{ .Values.apigwClusterSize }}
   selector:
     matchLabels:
       app: {{ .Values.global.app }}
@@ -82,22 +82,22 @@ spec:
           tcpSocket:
             port: {{ int .Values.apigwRuntimePort }}
           failureThreshold: 3
-          initialDelaySeconds: 120
+          initialDelaySeconds: 300
           periodSeconds: 30
           successThreshold: 1
           timeoutSeconds: 1
-          
+
         readinessProbe:
           httpGet:
             path: /rest/apigateway/health
             port: {{ int .Values.apigwRuntimePort }}
             scheme: HTTP
           failureThreshold: 3
-          initialDelaySeconds: 30
+          initialDelaySeconds: 300
           periodSeconds: 30
           successThreshold: 1
           timeoutSeconds: 1
-          
+
         volumeMounts:
           - name: apigw-config
             mountPath: /opt/softwareag/IntegrationServer/instances/{{ .Values.global.integrationServerInstanceName }}/packages/WmAPIGateway/resources/configuration
