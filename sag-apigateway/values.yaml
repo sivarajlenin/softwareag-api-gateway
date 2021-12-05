@@ -24,7 +24,7 @@ global:
   trialUsage:                      true
   registryCredentialsName:         registry-credentials
 
-apigwClusterSize:   1
+apigwClusterSize:   2
 
 apigwImage:            "us-central1-docker.pkg.dev/gcp-lab-332618/gcp-lab-artifactory-01/apigw-demo-apidays"
 apigwTag:              "10.11.01"
@@ -41,7 +41,7 @@ nginxConfigmap:        "nginx-config"
 apigwLicenseConfig:    "apigw-license-config"
 apigwLicenseFilename:  "licenseKey.xml"
 
-k8sClusterSuffix:      "apidays-paris-2021"
+k8sClusterSuffix:      ".apidays-paris-2021"
 
 clusterDiscoveryAccount: "cluster-discovery-sa"
 clusterDiscoveryRole:    "cluster-discovery-role"
