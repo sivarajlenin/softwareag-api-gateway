@@ -21,7 +21,7 @@ global:
   app:                             apigateway
   integrationServerInstanceName:   default
   curlImage:                       "curlimages/curl"
-  trialUsage:                      false
+  trialUsage:                      true
   registryCredentialsName:         registry-credentials
 
 apigwClusterSize:   1
